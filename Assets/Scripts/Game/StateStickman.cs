@@ -1,11 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StateStickman : MonoBehaviour
 {
     [SerializeField] private Material currentMaterial;
+
+    public UnityEvent applyStateEvent;
     
     private MeshRenderer meshRenderer;
     
@@ -25,6 +25,7 @@ public class StateStickman : MonoBehaviour
     {
         if (currentMaterial != null)
             meshRenderer.material = currentMaterial;
+        applyStateEvent?.Invoke();
     }
 
     private void Awake()
